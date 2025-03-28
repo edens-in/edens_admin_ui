@@ -1,0 +1,24 @@
+.inventory-content-container{ 
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: auto;
+    gap: 18px;
+    grid-template-areas: 
+       "A A A A B B B B"
+       "C C C C C C C C"
+       "C C C C C C C C"
+       "C C C C C C C C"
+       "C C C C C C C C"
+    ;
+}
+
+.inventory-item{ 
+    border-radius: var(--form-corner-radius);
+    background-color: white;
+}    
+
+.A{ grid-area: A;}
+.B{ grid-area: B;}
+.C{ grid-area: C;}

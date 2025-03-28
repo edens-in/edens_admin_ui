@@ -1,0 +1,174 @@
+/* Sidebar Container */
+.sidebar {
+    height: 100vh;
+    background-color: white; /* Equivalent to bg-gray-900 */
+    color: var(--black);
+    padding: 16px;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  /* Open and Closed States */
+  .sidebar.open {
+    width: 296px;
+  }
+  
+  .sidebar.closed {
+    width: 50px;
+  }
+  
+  /* Menu Button */
+  .menu-button {
+    background: none;
+    border: none;
+    color: var(--black);
+    cursor: pointer;
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
+  
+  /* Menu List */
+  .menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Menu Item */
+  .menu-item {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+    margin-bottom: 10px;
+    /* padding: 10px; */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+  }
+  
+  .menu-item:hover {
+    background-color: var(--primary-color);/* Equivalent to hover:bg-gray-700 */
+  }
+  .menu-item:hover .menu-link {
+    color: white;/* Equivalent to hover:bg-gray-700 */
+  }
+  
+  /* Menu Link */
+  .menu-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--black);
+    font-size: 18px;
+    padding: 10px;
+    gap: 12px;
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100%;
+  }
+  .menu-text{ 
+    transition: all 0.4s ease-in-out;
+  }
+  /* Hide menu text when sidebar is closed */
+  .sidebar.closed .menu-text {
+    /* display: none; */
+    opacity: 0;
+    
+  }
+
+
+
+
+
+
+
+  .dashboard-container {
+    display: flex;
+    /* min-height: 100vh; */
+    margin-top: 83px;
+    width: 100%;
+  }
+
+  
+  .main-content {
+    flex-grow: 1;
+    overflow: auto;
+  }
+  
+  .content-wrapper {
+    padding: 24px 10px;
+    padding-right: 0px;
+    /* margin: 0 auto; */
+  }
+  
+  /* When sidebar is closed */
+  .sidebar.closed ~ .main-wrapper {
+    margin-left: 80px; /* Match sidebar width when closed */
+  }
+  
+  /* Make sure sidebar doesn't affect the margin */
+  .sidebar.open ~ .main-content,
+  .sidebar.closed ~ .main-content {
+    margin: 10px;
+  } 
+
+
+
+  /* Nav Bar Properties */
+  .nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - 58px); /* Adjust dynamically based on sidebar */
+    transition: width 0.3s ease-in-out, margin-left 0.3s ease-in-out;
+    z-index: 1000; /* Ensure it stays above content */
+    /* border: 1px solid red; */
+  }
+
+  .sidebar.open ~ .nav-container {
+    width: calc(100% - 320px); /* Adjust width dynamically */
+    margin-left: 320px;
+  }
+  
+  /* When sidebar is closed */
+  .sidebar.closed ~ .nav-container {
+    width: calc(100% - 80px);
+    margin-left: 80px;
+  }
+
+.nav-header{ 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 21px 14px;
+  background-color: white;
+  margin-bottom: 1.5px;
+}
+.nav-footer{ 
+  padding: 4px 20px;
+  background-color: white;
+  word-spacing: 10px;
+}
+
+
+.nav-info{ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.my-shop-area{ 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 12px; 
+  height: 28px;
+  width: 124px;
+  background-color: #fef5ea;
+  border-radius: 4px;
+}

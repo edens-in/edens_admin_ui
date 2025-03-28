@@ -1,0 +1,73 @@
+*{ 
+  margin: 0;
+  padding: 0;
+}
+
+
+:root{ 
+  --primary-color: #5570f1; 
+  --secondary-color: #ffcc91; 
+  --black: #1c1d22; 
+  --white: #f8f8f8;
+  --success: #519c66; 
+  --danger: #cc5f5f; 
+  --background: #f4f5fa; 
+  --padding-large: 32px; 
+  --padding-medium: 24px;
+  --padding-small: 16px;
+  --padding-xsmall: 8px;
+  --margin-large: 32px;
+  --margin-medium: 24px;
+  --margin-small: 16px;
+  --margin-xsmall: 8px;
+  --form-corner-radius: 12px; 
+  --input-corner-radius: 8px; 
+  --input-bg: #f6f7fb; /* Black at 40% opacity */
+
+
+}
+
+body{ 
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background);
+  color: var(--black);
+}
+
+h1{ 
+  font-size: 64px;
+}
+h2{ 
+  font-size: 52px;
+}
+h3{ 
+  font-size: 44px;
+}
+a{ 
+  text-decoration: none;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+.sub-heading1{ 
+  font-size: 32px;
+}
+.sub-heading2{ 
+  font-size: 28px;
+}
+.sub-heading3{ 
+  font-size: 20px;
+}
+.paragraph1{ 
+  font-size: 16px;
+}
+.paragraph2{ 
+  font-size: 14px;
+}
+.label1{ 
+  font-size: 12px;
+}
+.label2{ 
+  font-size: 11px;
+}
+.label3{ 
+  font-size: 10px;
+}
