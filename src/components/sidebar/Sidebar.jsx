@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import { FaUser } from "react-icons/fa";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { IoSettingsSharp } from "react-icons/io5";
@@ -8,10 +8,11 @@ import { FaRegWindowRestore } from "react-icons/fa";
 import logo from "../../assets/logo.png"
 
 
-
 import "./Styles.css"
 
 function Sidebar({onToggle}) {
+  const location = useLocation(); 
+
   const [isOpen, setIsOpen] = useState(true);
   const handleToggle = () => { 
     setIsOpen(prev => {
@@ -33,7 +34,7 @@ function Sidebar({onToggle}) {
       </button>
       <ul className="menu">
         {menuItems.map((item, index) => (
-          <li key={index} className="menu-item">
+          <li key={index} className={`menu-item ${location.pathname === item.path ? "active" : ""}`}>
             <Link to={item.path} className="menu-link">
               {item.icon}
               {isOpen && <span className="menu-text">{item.name}</span>}

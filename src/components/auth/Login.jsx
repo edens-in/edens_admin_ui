@@ -5,7 +5,14 @@ import { CiMail } from "react-icons/ci"
 import { CiLock } from "react-icons/ci"
 import logo from "../../assets/logo.png"
 
+import axios from "../../utils/axiosInstance"; 
+import { useAuth } from '../../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
+
+
 const Login = () => {
+    const {refetchAuth} = useAuth(); 
+    const navigate = useNavigate(); 
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -16,9 +23,15 @@ const Login = () => {
             [e.target.name]: e.target.value
         })
     }
-    const hadleLogin = (e) => {
+    const hadleLogin = async (e) => {
         e.preventDefault();
-        console.log(formData);
+        try{ 
+            await axios.post('/api/sellers/login', formData)
+            await refetchAuth(); 
+            navigate('/'); 
+        }catch( err ) { 
+            console.log(err.message); 
+        }
     }
 
     return (

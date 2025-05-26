@@ -9,6 +9,7 @@ import Inventory from './components/inventory/Inventory'
 import Profile from './components/profile/Profile'
 import Orders from './components/orders/Orders'
 import Users from './components/users/Users'
+import PrivateRoutes from './routes/PrivateRoutes'
 
 
 
@@ -16,24 +17,26 @@ import Users from './components/users/Users'
 function App() {
 
   return (
-   <>
+    <>
       <Router>
         <Routes>
-          <Route path='/login' element={<LoginPage />}/>
-          <Route path='/signup' element={<SignupPage/>}/>
-          
-          {/* Main dashboard layout with nested routes */}
-          <Route path="/" element={<DashboardPage />}>
-            <Route index element={<Dashboard />} />
-            <Route path="inventory" element={<Inventory />} />
-            <Route path="customers" element={<Users />} />
-            <Route path="orders" element={<Orders />} />
-            <Route path="settings" element={<Profile />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/signup' element={<SignupPage />} />
 
+          {/* Main dashboard layout with nested routes */}
+          <Route path="/" element={<PrivateRoutes />}>
+            <Route path="/" element={<DashboardPage />}>
+              <Route index element={<Dashboard />} />
+              <Route path="inventory" element={<Inventory />} />
+              <Route path="customers" element={<Users />} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="settings" element={<Profile />} />
+            </Route>
           </Route>
+
         </Routes>
       </Router>
-   </>
+    </>
   )
 }
 

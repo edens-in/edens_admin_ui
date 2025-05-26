@@ -4,11 +4,19 @@ import { FaBell } from "react-icons/fa";
 import { FaHouse } from "react-icons/fa6";
 
 import { useLocation } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext'
 
 import "./Styles.css"
 
 const Navbar = () => {
     const location = useLocation();
+
+    const { user, loading } = useAuth();
+
+    if(loading) return <div>Loading . . .</div>
+    const SellerName = () => {
+        return user.user.seller.email.split('@')[0].split('.').map(name => name.charAt(0).toUpperCase() + name.slice(1)).join(' ');
+    }
 
     const getHeader = (path) => {
         switch (path) {
@@ -26,22 +34,22 @@ const Navbar = () => {
                 return 'Dashboard';
         }
     }
-    const formatedPath = (path) => { 
-        return ' / ' +  path
-        .split('/')
-        .filter(Boolean)
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' / '); 
+    const formatedPath = (path) => {
+        return ' / ' + path
+            .split('/')
+            .filter(Boolean)
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' / ');
     }
     return (
         <nav className='nav-container'>
             <div className='nav-header'>
                 <div className='nav-heading'>
-                    <span className='sub-heading3'>{getHeader(location.pathname)}</span>  
+                    <span className='sub-heading3'>{getHeader(location.pathname)}</span>
                 </div>
                 <div className='nav-info'>
                     <div className='my-shop-area'>
-                        <span className='paragraph2'>Nanny's Shop </span>
+                        <span className='paragraph2'>{SellerName()}</span>
                         <RiArrowDropDownLine />
                     </div>
                     <FaBell style={{ color: 'var(--primary-color)' }} />

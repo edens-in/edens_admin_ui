@@ -53,6 +53,12 @@
   .menu-item:hover {
     background-color: var(--primary-color);/* Equivalent to hover:bg-gray-700 */
   }
+  .active{ 
+    background-color: var(--primary-color);
+  }
+  .active .menu-link{ 
+    color: white;
+  }
   .menu-item:hover .menu-link {
     color: white;/* Equivalent to hover:bg-gray-700 */
   }

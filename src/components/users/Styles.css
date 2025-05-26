@@ -1,24 +1,34 @@
-.users-content-container{ 
+.users-content-container { 
     width: 100%;
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: auto;
+    grid-template-rows: repeat(5, 1fr);
     gap: 18px;
     grid-template-areas: 
-       "A A A A B B B B"
-       "C C C C C C C C"
-       "C C C C C C C C"
-       "C C C C C C C C"
-       "C C C C C C C C"
-    ;
+        "A A A A B B B B"
+        "C C C C C C C C"
+        "C C C C C C C C"
+        "C C C C C C C C"
+        "C C C C C C C C";
 }
 
-.users-item{ 
+.users-item { 
     border-radius: var(--form-corner-radius);
     background-color: white;
 }    
 
-.A{ grid-area: A;}
-.B{ grid-area: B;}
-.C{ grid-area: C;}
+.users-item-A { 
+    grid-area: A;
+    padding: 11px 15px;
+}
+
+.users-item-B { 
+    grid-area: B;
+    padding: 11px 15px;
+}
+
+.users-item-C { 
+    grid-area: C;
+    padding: 11px 15px;
+}

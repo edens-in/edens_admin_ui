@@ -1,25 +1,39 @@
-.order-content-container{ 
+.order-content-container { 
     width: 100%;
     height: 100vh;
     display: grid;
-    grid-template-columns: repeat(8,1fr);
-    grid-template-rows: auto;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     gap: 18px;
     grid-template-areas: 
-       "A A A B B B C C"
-       "D D D D D D D D"
-       "D D D D D D D D"
-       "D D D D D D D D"
-       "D D D D D D D D"
-    ;
+        "A A A B B B C C"
+        "D D D D D D D D"
+        "D D D D D D D D"
+        "D D D D D D D D"
+        "D D D D D D D D";
 }
 
-.order-item{ 
+.order-item { 
     border-radius: var(--form-corner-radius);
     background-color: white;
 }    
 
-.A{ grid-area: A;}
-.B{ grid-area: B;}
-.C{ grid-area: C;}
-.D{ grid-area: D;}
+.order-item-A { 
+    grid-area: A;
+    padding: 11px 15px;
+}
+
+.order-item-B { 
+    grid-area: B;
+    padding: 11px 15px;
+}
+
+.order-item-C { 
+    grid-area: C;
+    padding: 11px 10px;
+}
+
+.order-item-D { 
+    grid-area: D;
+    padding: 11px 15px;
+}
