@@ -33,14 +33,16 @@ function Sidebar({onToggle}) {
         <img src={logo} alt="logo" className="logo" style={{width: "50px", height: "50px"}}/>
       </button>
       <ul className="menu">
-        {menuItems.map((item, index) => (
-          <li key={index} className={`menu-item ${location.pathname === item.path ? "active" : ""}`}>
+        {menuItems.map((item, index) => {
+        const isActive = item.path === '/' ? location.pathname === '/' : location.pathname.startsWith(item.path)
+        return (
+          <li key={index} className={`menu-item ${isActive ? "active" : ""}`}>
             <Link to={item.path} className="menu-link">
               {item.icon}
               {isOpen && <span className="menu-text">{item.name}</span>}
             </Link>
           </li>
-        ))}
+        ) })}
       </ul>
     </div>
   )

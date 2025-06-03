@@ -1,0 +1,28 @@
+.create-new-button{ 
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem; 
+    background-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    color: var(--white); 
+    border-radius: var(--form-corner-radius);
+    font-size: var(--paragraph1);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.create-new-button-icon{ 
+    font-size: 22px; 
+    transform: translateY(10%);
+    transition: all 0.3s ease-in-out;
+    
+}
+
+.create-new-button:hover{ 
+    background-color: var(--primary-color-hover);
+}
+
+.create-new-button:hover .create-new-button-icon{ 
+    transform: rotate(90deg) translateY(10%)
+}

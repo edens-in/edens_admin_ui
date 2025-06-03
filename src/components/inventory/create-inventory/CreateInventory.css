@@ -1,0 +1,26 @@
+.create-inventory-wrapper{ 
+    width: 100%;
+    /* border: 1px solid red; */
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(3, 1fr); 
+    gap: 18px;
+    grid-template-areas: 
+        "A A B"
+        "A A B"
+        "A A B"
+}
+
+.create-inventory-item{ 
+    border-radius: var(--form-corner-radius);
+    /* border: 1px solid red; */
+    background-color: white;
+}
+
+.create-inventory-item-A{ 
+    grid-area: A;
+}
+.create-inventory-item-B{ 
+    grid-area: B;
+}

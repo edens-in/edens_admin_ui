@@ -6,14 +6,20 @@ import { CiLock } from "react-icons/ci"
 import { CiUser } from "react-icons/ci";
 import { CiMobile3 } from "react-icons/ci";
 
+import axios from "../../utils/axiosInstance"; 
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom'
 import logo from "../../assets/logo.png"
+
 const Signup = () => {
+    const {refetchAuth} = useAuth(); 
+    const navigate = useNavigate(); 
     const [formData, setFormData] = useState({
         email: '',
         password: '', 
         phone: '', 
-        name: '',
-        username: '', 
+        businessName: '',
+         
 
     });
     const handleChange = (e) => {
@@ -23,9 +29,16 @@ const Signup = () => {
         })
     }
 
-    const hadleLogin = (e) => {
+    const hadleLogin = async(e) => {
         e.preventDefault();
-        console.log(formData);
+        // console.log(formData);
+        try{ 
+            await axios.post('/api/sellers/signup', formData); 
+            await refetchAuth(); 
+            navigate('/'); 
+        } catch (e) { 
+            console.log(e.message); 
+        }
     }
 
   return (
@@ -43,7 +56,7 @@ const Signup = () => {
             <form onSubmit={(e) => hadleLogin(e)}>
                 <div className='input-field'>
                     <CiUser className='icon paragraph2' />
-                    <input className='paragraph2' type='text' name='name' value={formData.name} onChange={(e) => handleChange(e)} placeholder='Enter Name' />
+                    <input className='paragraph2' type='text' name='businessName' value={formData.businessName} onChange={(e) => handleChange(e)} placeholder='Enter Name' />
                 </div>
                 {/* <div className='input-field'>
                     <CiMail className='icon paragraph2' />

@@ -5,7 +5,11 @@ import SignupPage from './pages/SignupPage'
 import DashboardPage from './pages/DashboardPage'
 
 import Dashboard from './components/dashboard/Dashboard'
+
+import InventoryLayout from './components/inventory/InventoryLayout'
 import Inventory from './components/inventory/Inventory'
+import CreateInventory from './components/inventory/create-inventory/CreateInventory'
+
 import Profile from './components/profile/Profile'
 import Orders from './components/orders/Orders'
 import Users from './components/users/Users'
@@ -27,11 +31,14 @@ function App() {
           <Route path="/" element={<PrivateRoutes />}>
             <Route path="/" element={<DashboardPage />}>
               <Route index element={<Dashboard />} />
-              <Route path="inventory" element={<Inventory />} />
+              <Route path="inventory" element={<InventoryLayout />}>
+                <Route index element = {<Inventory />} />
+                <Route path="new-inventory" element={<CreateInventory />} />
+              </Route>
               <Route path="customers" element={<Users />} />
               <Route path="orders" element={<Orders />} />
               <Route path="settings" element={<Profile />} />
-            </Route>
+            </Route>  
           </Route>
 
         </Routes>
