@@ -75,10 +75,11 @@ const Navbar = () => {
                     <>
                         {location.pathname.split('/').filter(Boolean).map((segment, index, arr) => {
                             const path = '/' + arr.slice(0, index + 1).join('/');
+                            const isActive = path === location.pathname; 
                             return (
                                 <span key={index}>
                                     {' / '}
-                                    <Link to={path} style={{ color: 'var(--primary-color)' }}>
+                                    <Link to={path} style={{ color: isActive ? 'grey' : 'var(--primary-color)'}}>
                                         {formatSegmentName(segment)}
                                     </Link>
                                 </span>

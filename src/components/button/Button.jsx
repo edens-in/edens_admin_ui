@@ -4,7 +4,7 @@ import './Styles.css';
 const Button = ({icon,innerText, onClick}) => {
   return (
     <button className='create-new-button' onClick={onClick}>
-       <span className='create-new-button-icon'>{icon}</span> {innerText}
+       <span className='create-new-button-icon' style={icon ? {} : {display: 'none'} }>{icon}</span> {innerText}
     </button>
   )
 }
