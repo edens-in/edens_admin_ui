@@ -40,6 +40,7 @@
 }
 .create-inventory-item-B{ 
     grid-area: B;
+    padding: 1.5rem 1.5rem;
 }
 
 
@@ -68,3 +69,18 @@
     /* border: 1px solid red; */
     height: 100%;
 }
+
+
+
+/* item B */
+.create-inventory-item-B-drag-drop-select{ 
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+
