@@ -5,10 +5,6 @@ import "./Styles.css"
 
 import { TiDeleteOutline } from "react-icons/ti";
 
-
-
-
-
 const CustomFileInput = ({ files, setFiles }) => {
 
 
@@ -49,7 +45,7 @@ const CustomFileInput = ({ files, setFiles }) => {
                         <ul className="drop-zone-file-list">
                             {files.map((file) => (
                                 <li key={file.name} className="file-item">
-                                    <button onClick={() => removeFile(file.name)}><TiDeleteOutline style={{fontSize: '20px'}}/></button>
+                                    <button onClick={() => removeFile(file.name)}><TiDeleteOutline style={{ fontSize: '20px' }} /></button>
                                     <div className='file-item-img'>
                                         <img src={URL.createObjectURL(file)} alt='files' draggable="false" />
                                         {/* {file.name} */}

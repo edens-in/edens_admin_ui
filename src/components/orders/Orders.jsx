@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import "./Styles.css"
 import DashboardCard from '../dashboard-card/DashboardCard';
 import { FaShoppingBag } from "react-icons/fa"; 
 import { IoCartOutline } from "react-icons/io5";
+
+import { useAuth } from '../../context/AuthContext';
+
+
+import axios from '../../utils/axiosInstance';
 const dataset1 = [
   {param: "All Orders", value: 210}, 
   {param: "Pending", value: 30}, 
@@ -18,12 +23,39 @@ const dataset3 = [
   {param: "Customers", value: 0}, 
 ]
 const Orders = () => {
+  const {user, isAuthenticated, loading} = useAuth();
+
+  
+  
+    if(loading) return <div>Loading . . . </div>
+  
+    if(!isAuthenticated) return <div>Unauthorised Access</div>
+    console.log(user, "from profile order"); 
+
+  
+
+  const fetchSellerOrders = async() => { 
+    try{ 
+       const response = await axios.get('/api/orders/seller/orders'); 
+       console.log(response); 
+    }catch(er){   
+      console.log(err.message); 
+    }
+  }
+
+
+   useEffect(() => { 
+    
+      fetchSellerOrders(); 
+    }, []);
   return (
     <div className="order-content-container">
     <div className='order-item order-item-A'><DashboardCard obj={dataset1} isSelect={true} Icon={FaShoppingBag} iconColor={'#fff7ed'} textColor={'#8b8d97'} /></div>
     <div className='order-item order-item-B'><DashboardCard obj={dataset2} isSelect={true} Icon={FaShoppingBag} iconColor={'#fff7ed'} textColor={'#8b8d97'} /></div>
     <div className='order-item order-item-C'><DashboardCard obj={dataset3} isSelect={true} Icon={IoCartOutline} iconColor={'#fff7ed'} textColor={'#8b8d97'} /></div>
-    <div className='order-item order-item-D'></div>
+    <div className='order-item order-item-D'>
+      
+    </div>
   </div>
   )
 }
