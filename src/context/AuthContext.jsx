@@ -6,7 +6,7 @@ export const AuthProvider = ({children}) => {
     const fetchAuth = async () => { 
         try { 
             const res = await axios.get('/api/sellers/verify-seller');
-            console.log(res.data);  
+            console.log(res.data, "this is data");  
             setAuth({loading: false, isAuthenticated: true, user: res.data})
         }catch(err) { 
             setAuth({loading: false, isAuthenticated: false, user: null})
