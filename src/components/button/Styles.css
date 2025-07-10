@@ -16,13 +16,21 @@
     font-size: 22px; 
     transform: translateY(10%);
     transition: all 0.3s ease-in-out;
-    
 }
+
+/* .transform-icon {
+  transform: translateY(10%);
+} */
 
 .create-new-button:hover{ 
     background-color: var(--primary-color-hover);
 }
 
 .create-new-button:hover .create-new-button-icon{ 
-    transform: rotate(90deg) translateY(10%)
+    transform: rotate(90deg) translateY(10%);
+  transform: rotate(90deg) translateY(10%);
+}
+
+.disabled-button{ 
+    cursor: not-allowed;
 }

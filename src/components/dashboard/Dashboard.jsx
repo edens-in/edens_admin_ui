@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Styles.css'
 import PiechartComponent from './dashboard-components/piechart/PiechartComponent'
 import Barchart from './dashboard-components/barchart/Barchart';
 import DashboardCard from '../dashboard-card/DashboardCard';
+import ProductScreen from '../screens/product_screen/ProductScreen';
 import { FaHome } from 'react-icons/fa';
 import { FaUsers } from "react-icons/fa6";
 import { FaShoppingBag } from "react-icons/fa";
@@ -47,6 +48,7 @@ const timeRanges = {
 
 const dataTypes = ["Sales Amount", "Day Count"];
 const Dashboard = () => {
+  const [orders, setOrders] = useState([]); 
   return (
     <div className='dashboard-content-container'>
       <div className='dashboard-item dashboard-item-A'>
@@ -56,7 +58,7 @@ const Dashboard = () => {
       <div className='dashboard-item dashboard-item-C'><DashboardCard obj={dataset3} isSelect={true} Icon={FaShoppingBag} iconColor={'#fff7ed'} textColor={'#8b8d97'}/></div>
       <div className='dashboard-item dashboard-item-D'><PiechartComponent dataSets={dataSets}/></div>
       <div className='dashboard-item dashboard-item-E'><DashboardCard obj={dataset4} isSelect={false} Icon={IoFolderSharp} iconColor={'#7087f3'} /></div>
-      <div className='dashboard-item dashboard-item-F'></div>
+      <div className='dashboard-item dashboard-item-F'>{orders.length > 0 ? (<>Orders will be shown here</>)  : (<ProductScreen  titleText= {"No Orders yet?"}/>)}</div>
       <div className='dashboard-item dashboard-item-G'><DashboardCard obj={dataset5} isSelect={true} Icon={IoCartOutline} iconColor={'#fff7ed'} textColor={'#8b8d97'}/></div>
       <div className='dashboard-item dashboard-item-H'><Barchart timeRanges={timeRanges} dataTypes={dataTypes}/></div>
     </div>

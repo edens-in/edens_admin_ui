@@ -80,6 +80,29 @@
 }
 
 
+/* logout */
+.logout-button {
+    display: flex;
+    align-items: center;
+
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    background-color: var(--primary-color);
+ 
+    font-size: 18px;
+    padding: 10px;
+    gap: 12px;
+    color: white;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+}
+
+.logout-button:hover{ 
+    background-color: var(--primary-color-hover);
+}
+
+
 
 
 

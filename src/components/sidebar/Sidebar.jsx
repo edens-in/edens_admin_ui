@@ -6,6 +6,7 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { FaBagShopping } from "react-icons/fa6";
 import { FaRegWindowRestore } from "react-icons/fa";
 import logo from "../../assets/logo.png"
+import Logout from '../auth/Logout';
 
 
 import "./Styles.css"
@@ -44,6 +45,9 @@ function Sidebar({onToggle}) {
           </li>
         ) })}
       </ul>
+      <div className='logout-container'>
+        <Logout isOpen={isOpen}/>
+      </div>
     </div>
   )
 }

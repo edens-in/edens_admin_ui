@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./Styles.css"
 import DashboardCard from '../dashboard-card/DashboardCard';
+import ProductScreen from '../screens/product_screen/ProductScreen';
 import { FaShoppingBag } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
 
@@ -112,62 +113,63 @@ const Orders = () => {
             </div>
           </div>
         </div>
-        <div className="order-show-orders-container">
-          <table className="order-show-orders-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Address</th>
-                <th>Order Date</th>
-                <th>Total</th>
-                {/* <th>Tracking Url</th> */}
-                <th>Payment</th>
-                <th>Product Name</th>
-                <th>Action</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentOrders?.map((order) => (
-                <tr key={order.orderId}>
-                  <td>{order.orderId}</td>
-                  <td>{order.address}</td>
-                  <td>{readableDateTimeFormating(order.createdAt)}</td>
-                  <td>₹{order.totalAmount}</td>
-                  {/* <td>{order.trackingUrl}</td> */}
-                  <td>{order.paymentStatus}</td>
-                  <td>{order.productName}</td>
-                  <td>
-                    <CustomSelect2
-                      value={order.status}
-                      options={statusOptions}
-                      onChange={(newStatus) => handleStatusChange(order.orderId, newStatus)}
-                    />
-                  </td>
-                  <td >
-                    <span
-                      className='order-status'
-                      style={{
-                        backgroundColor: orderStatusCustomBgColor(order.status),
-                        color: orderStatusCustomTextColor(order.status)
-                      }}
-                    >
-                      {order.status}</span>
-                  </td>
+        {orders.length > 0 ? (
+          <div className="order-show-orders-container">
+            <table className="order-show-orders-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Address</th>
+                  <th>Order Date</th>
+                  <th>Total</th>
+                  {/* <th>Tracking Url</th> */}
+                  <th>Payment</th>
+                  <th>Product Name</th>
+                  <th>Action</th>
+                  <th>Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {currentOrders?.map((order) => (
+                  <tr key={order.orderId}>
+                    <td>{order.orderId}</td>
+                    <td>{order.address}</td>
+                    <td>{readableDateTimeFormating(order.createdAt)}</td>
+                    <td>₹{order.totalAmount}</td>
+                    {/* <td>{order.trackingUrl}</td> */}
+                    <td>{order.paymentStatus}</td>
+                    <td>{order.productName}</td>
+                    <td>
+                      <CustomSelect2
+                        value={order.status}
+                        options={statusOptions}
+                        onChange={(newStatus) => handleStatusChange(order.orderId, newStatus)}
+                      />
+                    </td>
+                    <td >
+                      <span
+                        className='order-status'
+                        style={{
+                          backgroundColor: orderStatusCustomBgColor(order.status),
+                          color: orderStatusCustomTextColor(order.status)
+                        }}
+                      >
+                        {order.status}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
 
-          <div className="order-show-orders-pagination">
-            <button
-              disabled={page === 1}
-              onClick={() => setPage((prev) => prev - 1)}
-            >
-              Previous
-            </button>
+            <div className="order-show-orders-pagination">
+              <button
+                disabled={page === 1}
+                onClick={() => setPage((prev) => prev - 1)}
+              >
+                Previous
+              </button>
 
-            {/* {[...Array(totalPages)].map((_, index) => (
+              {/* {[...Array(totalPages)].map((_, index) => (
               <button
                 key={index}
                 className={page === index + 1 ? "order-show-orders-active" : ""}
@@ -176,18 +178,24 @@ const Orders = () => {
                 {index + 1}
               </button>
             ))} */}
-            <div className='order-show-orders-pages'>
-              {page} / {totalPages}
-            </div>
+              <div className='order-show-orders-pages'>
+                {page} / {totalPages}
+              </div>
 
-            <button
-              disabled={page === totalPages}
-              onClick={() => setPage((prev) => prev + 1)}
-            >
-              Next
-            </button>
+              <button
+                disabled={page === totalPages}
+                onClick={() => setPage((prev) => prev + 1)}
+              >
+                Next
+              </button>
+            </div>
           </div>
-        </div>
+        ) : (
+          <ProductScreen 
+            titleText={"No Orders Yet?"}
+          />
+        )}
+
       </div>
     </div>
   )

@@ -5,14 +5,16 @@ import { CiMail } from "react-icons/ci"
 import { CiLock } from "react-icons/ci"
 import logo from "../../assets/logo.png"
 
-import axios from "../../utils/axiosInstance"; 
+import axios from "../../utils/axiosInstance";
 import { useAuth } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
+import { toast } from 'react-toastify'
+
 
 const Login = () => {
-    const {refetchAuth} = useAuth(); 
-    const navigate = useNavigate(); 
+    const { refetchAuth } = useAuth();
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -25,26 +27,44 @@ const Login = () => {
     }
     const hadleLogin = async (e) => {
         e.preventDefault();
-        try{ 
-            await axios.post('/api/sellers/login', formData)
-            await refetchAuth(); 
-            navigate('/'); 
-        }catch( err ) { 
-            console.log(err.message); 
+        const loginPromise = axios.post('/api/sellers/login', formData);
+
+        // toast notification for the login process
+        toast.promise(
+            loginPromise,
+            {
+                pending: 'Login in progress...',
+                success: 'Login successful. Redirecting to dashboard...',
+                error: 'Login failed', 
+                   
+            },
+            {
+                position: 'top-right',
+                autoClose: 3000,
+                theme: 'light',
+            }
+        );
+        try {
+            await loginPromise;
+            await refetchAuth();
+            navigate('/');
+        } catch (err) {
+            toast.error(err.message); 
+            console.log(err.message);
         }
     }
 
     return (
         <div className='login-container'>
             <div className='auth-header'>
-                <img src={logo} alt='logo small' style={{width: '50px', height: '50px'}}/>
+                <img src={logo} alt='logo small' style={{ width: '50px', height: '50px' }} />
             </div>
             <div className='auth-body'>
                 <div className='auth-form'>
                     <div className='auth-form-header'>
-                        <img src={logo} alt='logo small' style={{marginBottom: '2rem', width: '50px', height: '50px'}}/>
-                        <span className='sub-heading3' style={{marginBottom: '0.5rem'}}>Welcome Back</span>
-                        <span className='paragraph2' style={{color: '#8b8d97'}}>Login to your account</span>
+                        <img src={logo} alt='logo small' style={{ marginBottom: '2rem', width: '50px', height: '50px' }} />
+                        <span className='sub-heading3' style={{ marginBottom: '0.5rem' }}>Welcome Back</span>
+                        <span className='paragraph2' style={{ color: '#8b8d97' }}>Login to your account</span>
                     </div>
                     <form onSubmit={(e) => hadleLogin(e)}>
                         <div className='input-field'>

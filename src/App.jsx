@@ -16,6 +16,10 @@ import Users from './components/users/Users'
 import PrivateRoutes from './routes/PrivateRoutes'
 
 
+import { ToastContainer } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
+
+
 
 
 function App() {
@@ -32,17 +36,30 @@ function App() {
             <Route path="/" element={<DashboardPage />}>
               <Route index element={<Dashboard />} />
               <Route path="inventory" element={<InventoryLayout />}>
-                <Route index element = {<Inventory />} />
+                <Route index element={<Inventory />} />
                 <Route path="new-inventory" element={<CreateInventory />} />
               </Route>
               <Route path="customers" element={<Users />} />
               <Route path="orders" element={<Orders />} />
               <Route path="settings" element={<Profile />} />
-            </Route>  
+            </Route>
           </Route>
 
         </Routes>
       </Router>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   )
 }
